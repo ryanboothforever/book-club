@@ -1,11 +1,21 @@
 <%- include('partials/header') -%>
 
 <main class="container">
-    <div class="row justify-content-around mt-5">
-        <a href="/login" class="col-3 btn btn-primary"> Login</a>
-        <a href="/signup" class="col-3 btn btn-primary"> Signup</a>
-    </div>
+    <form action="/login" method="POST">
+        <div>
+            <input type="email" name="email" id="email" placeholder="E-mail" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+        </div>
+        <div class="signin-options container">
+            <div class="signin-container">
+                <a href="/signup">Sign up</a>
+            </div>
+            <div class="button-container login-container">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
 </main>
-    
+
 
 <%- include('partials/footer') -%>

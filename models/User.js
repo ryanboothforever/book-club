@@ -1,13 +1,15 @@
+// enable encryption and connection to database
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 
+// template for storing users and use mongoose
 const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
   password: String,
 });
 
-// Password hash middleware.
+// Password hash middleware. ???
 
 UserSchema.pre("save", function save(next) {
   const user = this;
@@ -28,7 +30,7 @@ UserSchema.pre("save", function save(next) {
   });
 });
 
-// Helper method for validating user's password.
+// Helper method for validating user's password. ??
 
 UserSchema.methods.comparePassword = function comparePassword(
   candidatePassword,
