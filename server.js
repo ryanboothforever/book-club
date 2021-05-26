@@ -8,8 +8,8 @@ const methodOverride = require("method-override");
 const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
-const mainRoutes = require("./routes/main");
-const postRoutes = require("./routes/posts");
+const mainRoutes = require("./routes/home");
+const postRoutes = require("./routes/entries");
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
