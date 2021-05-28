@@ -1,13 +1,13 @@
 const { ObjectId } = require("bson");
 const cloudinary = require("../middleware/cloudinary");
-const Entry = require("../models/Entry");
-//const { post, entry } = require("../routes/home");
+const Post = require("../models/Posts");
+// const { post, post } = require("../routes/home");
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
       // find user by it's id and put it inside a variable
-      const entries = await Entry.find({ user: req.user.id });
+      const entries = await Post.find({ user: req.user.id });
       // render ejs using user's id from the request and export variable for use in ejs
       res.render("profile.ejs", { entries: entries, user: req.user });
     } catch (err) {
@@ -25,8 +25,8 @@ module.exports = {
   },
   getEntry: async (req, res) => {
     try {
-      const entry = await Entry.findById(req.params.id);
-      res.render("entry.ejs", { entry: entry, user: req.user });
+      const post = await Entry.findById(req.params.id);
+      res.render("post.ejs", { post: post, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -64,7 +64,7 @@ module.exports = {
           $inc: { likeCount: 1 },
           $push: { likes: ObjectId(req.user.id) },
         },
-        console.log("Liked the entry!"),
+        console.log("Liked the post!"),
         res.redirect(`/entries/${req.params.id}`)
       );
     } catch (err) {
@@ -79,7 +79,7 @@ module.exports = {
           $inc: { likeCount: -1 },
           $pull: { likes: ObjectId(req.user.id) },
         },
-        console.log("unLiked the entry!"),
+        console.log("unLiked the post!"),
         res.redirect(`/entries/${req.params.id}`)
       );
     } catch (err) {
@@ -89,9 +89,9 @@ module.exports = {
   deleteEntry: async (req, res) => {
     try {
       // Find post by id
-      let entry = await Entry.findById({ _id: req.params.id });
+      let post = await Entry.findById({ _id: req.params.id });
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(entry.cloudinaryId);
+      await cloudinary.uploader.destroy(post.cloudinaryId);
 
       await Entry.remove({ _id: req.params.id });
       console.log("Deleted Entry");
@@ -100,7 +100,7 @@ module.exports = {
       res.redirect("/profile");
     }
   },
-  // add a comment to an existing entry and using (consuming) the agreed upon Entry model
+  // add a comment to an existing post and using (consuming) the agreed upon Entry model
   createEntryComment: async (req, res) => {
     try {
       await Entry.findOneAndUpdate(

@@ -18,7 +18,9 @@ module.exports = function (passport) {
         }
         // make sure the user doesn't already exist
         if (!user) {
-          return done(null, false, { msg: `Email ${email} not found.` });
+          return done(null, false, {
+            msg: `Invalid E-mail. Please try again.`,
+          });
         }
         // make sure the user didn't already have a password.
         if (!user.password) {
