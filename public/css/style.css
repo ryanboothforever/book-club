@@ -2,6 +2,9 @@
     width: 8rem;
 }
 
+.container-xl{
+    width: 100vw;
+}
 .sec{
     outline: solid red;
     height: 40rem;
