@@ -7,6 +7,13 @@
         <img class="profile-pic" src="<%= user.img %>" />
       </div>
       <% } %>
+      <div class="pic-container">
+        <img class="rounded-circle profile-pic"
+          src="https://media.discordapp.net/attachments/745026292264730795/847957377277362226/empty.jpg" id="output" />
+        <div class="file-container">
+          <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control" id="file" name="file">
+        </div>
+      </div>
       <div class="p-3">
         <span><%= user.userName %></span>
       </div>
@@ -20,12 +27,55 @@
         <a href="/logout">Logout</a>
       </div>
     </div>
+
+
+
+
     <div class="sec col-sm-6 offset-md-1 justify-content-center text-center">
-      <div class="p-3">Collections</div>
+      <div class="container">
+        <div class="row gx-5">
+          <div class="col-12">Club Collections</div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col justify-content-start d-flex border border-secondary gx-3">
+            <div class="align-self-center">
+              <img class="rounded-circle profile-pic" src="https://i.imgur.com/rmPcjzA.jpg" alt="">
+            </div>
+            <div class="container overflow-hidden">
+              <div class="club-info row">
+                <div class="justify-content-start text-start">
+                  <span class="title text-start">Book Title</span>
+                </div>
+                <div class="author text-start">
+                  <span class="author">John Doe</span>
+                </div>
+                <div class="text-start">
+                  <p class="synopsis text-break">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+                    sunt ipsa rerum nam eveniet
+                    harum possimus beatae deleniti ea quidem earum, consectetur cupiditate minus velit explicabo eaque
+                    in,
+                    ab odit.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div><a href="#"><i class="fas fa-plus"></i></a></div>
+              <div><a href="#"><i class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+
+
+
     <div class=" sec col offset-md-1 justify-content-center text-center">
       <div class="p-3">friends</div>
     </div>
   </div>
 </div>
+<script src="../public/js/index.js"></script>
 <%- include('partials/footer') -%>

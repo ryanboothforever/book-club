@@ -9,3 +9,24 @@
     outline: solid red;
     height: 40rem;
 }
+/* Account */
+.pic-container{
+    margin-top: 10px;
+}
+
+.profile-pic{
+    max-width: 100px;
+}
+
+.file-container{
+    margin-top: 10px;
+    padding: 0 20px;
+}
+
+/* Collections */
+
+/* Scroll text on resize */
+.synopsis{
+ height: 100px;
+ overflow-y: scroll;
+}
