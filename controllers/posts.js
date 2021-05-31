@@ -1,6 +1,6 @@
-const { ObjectId } = require("bson");
-const cloudinary = require("../middleware/cloudinary");
-const Post = require("../models/Posts");
+const { ObjectId } = require('bson');
+const cloudinary = require('../middleware/cloudinary');
+const Post = require('../models/Posts');
 // const { post, post } = require("../routes/home");
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
       // find user by it's id and put it inside a variable
       const entries = await Post.find({ user: req.user.id });
       // render ejs using user's id from the request and export variable for use in ejs
-      res.render("profile.ejs", { entries: entries, user: req.user });
+      res.render('profile.ejs', { entries: entries, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -17,8 +17,8 @@ module.exports = {
 
   getFeed: async (req, res) => {
     try {
-      const entries = await Entry.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { entries: entries, user: req.user });
+      const entries = await Entry.find().sort({ createdAt: 'desc' }).lean();
+      res.render('feed.ejs', { entries: entries, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -26,7 +26,7 @@ module.exports = {
   getEntry: async (req, res) => {
     try {
       const post = await Entry.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      res.render('post.ejs', { post: post, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -49,8 +49,8 @@ module.exports = {
         commentCount: 0,
         comments: [],
       });
-      console.log("Entry has been added!");
-      res.redirect("/profile");
+      console.log('Entry has been added!');
+      res.redirect('/profile');
     } catch (err) {
       console.log(err);
     }
@@ -64,7 +64,7 @@ module.exports = {
           $inc: { likeCount: 1 },
           $push: { likes: ObjectId(req.user.id) },
         },
-        console.log("Liked the post!"),
+        console.log('Liked the post!'),
         res.redirect(`/entries/${req.params.id}`)
       );
     } catch (err) {
@@ -79,7 +79,7 @@ module.exports = {
           $inc: { likeCount: -1 },
           $pull: { likes: ObjectId(req.user.id) },
         },
-        console.log("unLiked the post!"),
+        console.log('unLiked the post!'),
         res.redirect(`/entries/${req.params.id}`)
       );
     } catch (err) {
@@ -94,10 +94,10 @@ module.exports = {
       await cloudinary.uploader.destroy(post.cloudinaryId);
 
       await Entry.remove({ _id: req.params.id });
-      console.log("Deleted Entry");
-      res.redirect("/profile");
+      console.log('Deleted Entry');
+      res.redirect('/profile');
     } catch (err) {
-      res.redirect("/profile");
+      res.redirect('/profile');
     }
   },
   // add a comment to an existing post and using (consuming) the agreed upon Entry model
@@ -109,7 +109,7 @@ module.exports = {
           $inc: { commentCount: 1 },
           $push: { comments: req.body.comment },
         },
-        console.log("comment has been added"),
+        console.log('comment has been added'),
         res.redirect(`/entries/${req.params.id}`)
       );
     } catch (err) {
