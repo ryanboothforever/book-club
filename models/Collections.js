@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // template for storing user's collections
-const CollectionsSchema = new mongoose.Schema({
+const StorySchema = new mongoose.Schema({
   bookTitle: { type: String, required: true, trim: true },
   bookAuthor: { type: String, required: true, trim: true },
   founder: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
