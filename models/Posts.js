@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const EntrySchema = new mongoose.Schema({
   title: {
@@ -24,12 +24,12 @@ const EntrySchema = new mongoose.Schema({
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
     },
   ],
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
   author: {
     type: String,
@@ -53,4 +53,4 @@ const EntrySchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Entry", EntrySchema);
+module.exports = mongoose.model('Entry', EntrySchema);
