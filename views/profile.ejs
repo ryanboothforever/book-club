@@ -1,46 +1,72 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row mt-5">
-      <div class="col-6">
-          <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          </div>
-          <div class="mt-5">
-            <h2>Add a post</h2>
-            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="mb-3">
-                <label for="caption" class="form-label">Caption</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-              </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-            </form>
-          </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="sec col justify-content-center text-center">
+      <% if(user.img === true) {%>
+      <div class="p-3 image-div">
+        <img class="profile-pic" src="<%= user.img %>" />
       </div>
-      <div class="col-6">
-        <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
-            </a>
-          </li>
-        <% } %>
-        </ul>
-        <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div>  
-      </div>  
+      <% } %>
+      <div class="pic-container">
+        <img class="rounded-circle profile-pic"
+          src="https://media.discordapp.net/attachments/745026292264730795/847957377277362226/empty.jpg" id="output" />
+        <div class="file-container">
+          <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control" id="file" name="file">
+        </div>
+      </div>
+      <div class="p-3">
+        <span><%= user.userName %></span>
+      </div>
+      <div class="p-3 quote">
+        <span><%= user.favQuote ? user.favQuote : '"You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose. You’re on your own. And you know what you know. And YOU are the one who’ll decide where to go…"'%></span>
+      </div>
+      <div class="p-3">
+        <span><a href="" class="settings">Settings</a></span>
+      </div>
+      <div class="p-3">
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+    <div class="sec col-sm-6 offset-md-1 justify-content-center text-center">
+      <div class="container">
+        <div class="row gx-5">
+          <div class="col-12">Club Collections</div>
+        </div>
+        <div class="row">
+          <div class="col-12 col justify-content-start d-flex border border-secondary gx-3">
+            <div class="align-self-center">
+              <img class="rounded-circle profile-pic" src="https://i.imgur.com/rmPcjzA.jpg" alt="">
+            </div>
+            <div class="container overflow-hidden">
+              <div class="club-info row">
+                <div class="justify-content-start text-start">
+                  <span class="title text-start">Book Title</span>
+                </div>
+                <div class="author text-start">
+                  <span class="author">John Doe</span>
+                </div>
+                <div class="text-start">
+                  <p class="synopsis text-break">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+                    sunt ipsa rerum nam eveniet
+                    harum possimus beatae deleniti ea quidem earum, consectetur cupiditate minus velit explicabo eaque
+                    in,
+                    ab odit.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div><a href="#"><i class="fas fa-plus"></i></a></div>
+              <div><a href="#"><i class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=" sec col offset-md-1 justify-content-center text-center">
+      <div class="p-3">friends</div>
     </div>
   </div>
 </div>
+<script src="../public/js/index.js"></script>
 <%- include('partials/footer') -%>
