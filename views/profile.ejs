@@ -36,27 +36,28 @@
         </div>
         <div class="row">
           <div class="col-12 col justify-content-start d-flex border border-secondary gx-3">
-            <div class="align-self-center">
-              <img class="rounded-circle profile-pic" src="https://i.imgur.com/rmPcjzA.jpg" alt="">
-            </div>
-            <div class="container overflow-hidden">
-              <div class="club-info row">
-                <div class="justify-content-start text-start">
-                  <span class="title text-start">Book Title</span>
-                </div>
-                <div class="author text-start">
-                  <span class="author">John Doe</span>
-                </div>
-                <div class="text-start">
-                  <p class="synopsis text-break">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
-                    sunt ipsa rerum nam eveniet
-                    harum possimus beatae deleniti ea quidem earum, consectetur cupiditate minus velit explicabo eaque
-                    in,
-                    ab odit.
-                  </p>
+            <% for(let i=0; i<clubs.length; i++) {%>
+            <div>
+              <div class="align-self-center">
+                <img class="rounded-circle profile-pic" src="https://i.imgur.com/rmPcjzA.jpg" alt="">
+              </div>
+              <div class="container overflow-hidden">
+                <div class="club-info row">
+                  <div class="justify-content-start text-start">
+
+                    <span class="title text-start"><%= clubs.bookTitle %></span>
+                  </div>
+                  <div class="author text-start">
+                    <span class="author"><%= clubs.bookAuthor %></span>
+                  </div>
+                  <div class="text-start">
+                    <p class="synopsis text-break"><%= clubs.synopsis %>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+              <%}%>
+          </div>
             <div class="col-2">
               <div><a href="#"><i class="fas fa-plus"></i></a></div>
               <div><a href="#"><i class="fas fa-envelope"></i></a></div>

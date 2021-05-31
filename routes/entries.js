@@ -6,8 +6,8 @@ const multer = require('multer');
 const upload = require('../middleware/multer');
 // use multer's diskStorage engine
 const { storage } = require('../middleware/multer');
-// brings in Collections schema from model
-const Collections = require('../models/Collections');
+// brings in Clubs schema from model
+const clubsController = require('../controllers/clubs');
 // point to a controller
 const entriesController = require('../controllers/posts');
 // use middleware to check if user ir logged in before calling the ultimate handler
@@ -22,13 +22,14 @@ router.post(
   entriesController.createEntry
 );
 
-//@desc Collections in dashboard
+//@desc Clubs in dashboard
 //@route  GET /
-router.get('/dashboard', ensureAuth, async (req, res) => {
-  try {
-    const collections = await Collections.find({ user: req.user.id }).lean();
-  } catch (err) {}
-});
+router.get('/:clubs', clubsController.getClub);
+// router.get('/dashboard', ensureAuth, async (req, res) => {
+//   try {
+//     const clubs = await Clubs.find({ user: req.user.id }).lean();
+//   } catch (err) {}
+// });
 
 router.put('/likeEntry/:id', entriesController.likeEntry);
 router.put('/unlikeEntry/:id', entriesController.unlikeEntry);
