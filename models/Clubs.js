@@ -11,4 +11,4 @@ const ClubSchema = new mongoose.Schema({
   members: { type: Array },
 });
 
-module.exports = mongoose.model('Club', ClubSchema);
+module.exports = mongoose.model('Clubs', ClubSchema);

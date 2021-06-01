@@ -1,11 +1,11 @@
 const { ObjectId } = require('bson');
 const cloudinary = require('../middleware/cloudinary');
-const Club = require('../models/Clubs');
+const Clubs = require('../models/Clubs');
 
 module.exports = {
   getClub: async (req, res) => {
     try {
-      const clubs = await Club.find().sort({ createdAt: 'desc' }).lean();
+      const clubs = await Clubs.find().sort({ createdAt: 'desc' }).lean();
       res.render('profile.ejs', { clubs: clubs, user: req.user });
     } catch (err) {
       console.log(err);

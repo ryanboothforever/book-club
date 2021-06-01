@@ -13,23 +13,14 @@ const entriesController = require('../controllers/posts');
 // use middleware to check if user ir logged in before calling the ultimate handler
 const { ensureAuth, ensureGuest } = require('../middleware/auth');
 
-// will change route to /:id to get specific entry
-router.get('/:id', entriesController.getEntry);
+// will change route to /:id to get specific club
+router.get('/:id', clubsController.getClub);
 
 router.post(
   '/createEntry',
   upload.single('file'),
   entriesController.createEntry
 );
-
-//@desc Clubs in dashboard
-//@route  GET /
-router.get('/:clubs', clubsController.getClub);
-// router.get('/dashboard', ensureAuth, async (req, res) => {
-//   try {
-//     const clubs = await Clubs.find({ user: req.user.id }).lean();
-//   } catch (err) {}
-// });
 
 router.put('/likeEntry/:id', entriesController.likeEntry);
 router.put('/unlikeEntry/:id', entriesController.unlikeEntry);
