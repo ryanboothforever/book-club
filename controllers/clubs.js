@@ -6,10 +6,16 @@ module.exports = {
   getClub: async (req, res) => {
     try {
       const clubs = await Clubs.find().sort({ createdAt: "desc" }).lean();
-      console.log("testing");
       res.render("profile.ejs", { clubs: clubs, user: req.user });
     } catch (err) {
-      console.log("testing 2");
+      console.log(err);
+    }
+  },
+  createClubForm: async (req, res) => {
+    try {
+      const clubs = await Clubs.find().sort({ createdAt: "desc" }).lean();
+      res.render("createclubform.ejs", { clubs: clubs, user: req.user });
+    } catch (err) {
       console.log(err);
     }
   },
@@ -21,13 +27,13 @@ module.exports = {
       await Club.create({
         bookTitle: req.body.bookTitle,
         bookAuthor: req.body.bookAuthor,
-        image: result.secure_url,
-        cloudinaryId: result.public_id,
+        //image: result.secure_url,
+        //cloudinaryId: result.public_id,
         synopsis: req.body.synopsis,
-        founder: req.user.id,
-        memebers: [],
+        // founder: req.user.id,
+        // memebers: [],
       });
-      console.log("Entry has been added!");
+      console.log("Club has been added!");
       res.redirect("/profile");
     } catch (err) {
       console.log(err);

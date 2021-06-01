@@ -1,0 +1,21 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form id="createClubForm" action="clubs/createClub" enctype="multipart/form-data" method="POST">
+        <p>Create a new club:</p>
+        <div>
+          <input type="text" class="form-control" id="bookTitle" name="bookTitle" placeholder="Book title" required>
+        </div>
+        <div>
+          <input type="text" class="form-control" id="bookAuthor" name="bookAuthor" placeholder="Book Author" required>
+        </div>
+        <div>
+          <input type="text" class="form-control" id="synopsis" name="synopsis" placeholder="Book synopsis" required>
+        </div>
+        <button type="submit" class="btn btn-primary login-button" value="Upload">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>
