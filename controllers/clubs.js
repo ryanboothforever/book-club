@@ -1,12 +1,13 @@
-const { ObjectId } = require('bson');
-const cloudinary = require('../middleware/cloudinary');
-const Clubs = require('../models/Clubs');
+const { ObjectId } = require("bson");
+const cloudinary = require("../middleware/cloudinary");
+const Clubs = require("../models/Clubs");
 
 module.exports = {
   getClub: async (req, res) => {
     try {
-      const clubs = await Clubs.find().sort({ createdAt: 'desc' }).lean();
-      res.render('profile.ejs', { clubs: clubs, user: req.user });
+      const clubs = await Clubs.find().sort({ createdAt: "desc" }).lean();
+      console.log("testing");
+      res.render("profile.ejs", { clubs: clubs, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -25,8 +26,8 @@ module.exports = {
         founder: req.user.id,
         memebers: [],
       });
-      console.log('Entry has been added!');
-      res.redirect('/profile');
+      console.log("Entry has been added!");
+      res.redirect("/profile");
     } catch (err) {
       console.log(err);
     }
