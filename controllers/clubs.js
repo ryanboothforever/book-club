@@ -9,6 +9,7 @@ module.exports = {
       console.log("testing");
       res.render("profile.ejs", { clubs: clubs, user: req.user });
     } catch (err) {
+      console.log("testing 2");
       console.log(err);
     }
   },
