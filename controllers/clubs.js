@@ -30,8 +30,9 @@ module.exports = {
         //image: result.secure_url,
         //cloudinaryId: result.public_id,
         synopsis: req.body.synopsis,
-        // founder: req.user.id,
-        // memebers: [],
+        founderID: req.user.id,
+        founderName: req.user.userName,
+        memebers: [],
       });
       console.log("Club has been added!");
       res.redirect("/profile");
