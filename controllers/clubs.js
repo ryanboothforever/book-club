@@ -22,9 +22,9 @@ module.exports = {
   createClub: async (req, res) => {
     try {
       // upload image to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
-      console.log(result);
-      await Club.create({
+      // const result = await cloudinary.uploader.upload(req.file.path);
+      // console.log(result);
+      await Clubs.create({
         bookTitle: req.body.bookTitle,
         bookAuthor: req.body.bookAuthor,
         //image: result.secure_url,
