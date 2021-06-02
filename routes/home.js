@@ -16,6 +16,7 @@ router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
 router.get("/profile", ensureAuth, clubsController.getClub);
 router.get("/createclubform", ensureAuth, clubsController.createClubForm);
+
 router.get("/feed", ensureAuth, entriesController.getFeed);
 router.get("/entry", entriesController.getEntry);
 
