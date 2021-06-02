@@ -16,7 +16,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 // will change route to /:id to get specific club
 //router.get("/profile", clubsController.getClub);
 router.post(
-  "/createclubform",
+  "/clubs/createClub",
   upload.single("file"),
   clubsController.createClub
 );
