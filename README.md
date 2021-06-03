@@ -1,4 +1,4 @@
-# Book-Club
+# Book Club 📘
 
 A multi user social application for creating virtual book clubs.  
 Create an account, press the "+" button to make a new book club with whatever title you like!
