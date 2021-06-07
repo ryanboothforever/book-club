@@ -15,8 +15,12 @@
         </div>
         <div>
           <label for="members">Members</label>
-          <input type="checkbox" class="form-control" id="members" name="">
-          <p><%= users[2].userName %></p>
+          <% for(let i= 0; i<users.length; i++) { %>
+          <div>
+            <label for="<%= users[i]._id %>"><%= users[i].userName %></label>
+            <input type="checkbox" value="<%= users[i]._id %>" name="members">
+          </div>
+          <% } %>
         </div>
         <button type="submit" class="btn btn-primary login-button" value="Upload">Submit</button>
       </form>
