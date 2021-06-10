@@ -20,23 +20,17 @@ const Books = (module.exports = {
     }
   },
   createClub: async (req, res) => {
-    let members;
-    if (members === undefined) {
-      members = [req.user.id];
-      console.log(`${members}: first if`);
+    if (req.body.members === undefined) {
+      req.body.members = [req.user.id];
     } else if (typeof req.body.members === "string") {
-      members = [req.user.id, req.body.members];
-      console.log(`${members}: 2nd if`);
+      req.body.members = [req.user.id, req.body.members];
     } else if (Array.isArray(req.body.members)) {
-      members = req.body.members;
-      members.unshift(req.user.id);
-      console.log(`${members}: 3rd if`);
+      req.body.members = req.body.members;
+      req.body.members.unshift(req.user.id);
     } else {
       res.status(400).send("Invalid value for members field.");
-      console.log(`${members}: else`);
     }
     try {
-      console.log(req.body.members);
       await Clubs.create({
         bookTitle: req.body.bookTitle,
         bookAuthor: req.body.bookAuthor,
@@ -47,7 +41,6 @@ const Books = (module.exports = {
         founderName: req.user.userName,
         members: req.body.members,
       });
-      console.log(`Members: ${members}`);
       console.log("Club has been added!");
       res.redirect("/profile");
     } catch (err) {
