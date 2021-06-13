@@ -9,7 +9,7 @@ const ClubSchema = new mongoose.Schema({
   synopsis: { type: String },
   status: { type: String, default: "public", enum: ["public", "private"] },
   createdAt: { type: Date, default: Date.now },
-  members: { type: Array, default: [] },
+  members: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 
 module.exports = mongoose.model("Clubs", ClubSchema);
