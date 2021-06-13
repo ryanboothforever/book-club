@@ -8,12 +8,6 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   password: String,
   favQuote: { type: String },
-  affilClubs: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Clubs",
-    },
-  ],
 });
 
 // Password hash middleware. ???
