@@ -5,8 +5,12 @@ const Users = require("../models/User");
 const Books = (module.exports = {
   getClub: async (req, res) => {
     try {
+      const users = await Users.find();
       const clubs = await Clubs.find().sort({ createdAt: "desc" }).lean();
-      res.render("profile.ejs", { clubs: clubs, user: req.user });
+      res.render("profile.ejs", {
+        clubs: clubs,
+        user: req.user,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -30,6 +34,7 @@ const Books = (module.exports = {
     } else {
       res.status(400).send("Invalid value for members field.");
     }
+
     try {
       await Clubs.create({
         bookTitle: req.body.bookTitle,
