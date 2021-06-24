@@ -13,10 +13,12 @@ const entriesController = require("../controllers/posts");
 // use middleware to check if user ir logged in before calling the ultimate handler
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-// will change route to /:id to get specific club
+
 router.post("/clubs/createClub", clubsController.createClub);
 router.put("/likeEntry/:id", entriesController.likeEntry);
 router.put("/unlikeEntry/:id", entriesController.unlikeEntry);
+// will change route to /:id to get specific club
+router.get("/banana", clubsController.getSeeClub);
 
 router.delete("/deleteEntry/:id", entriesController.deleteEntry);
 

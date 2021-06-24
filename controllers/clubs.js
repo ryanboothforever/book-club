@@ -15,6 +15,14 @@ const Books = (module.exports = {
       console.log(err);
     }
   },
+  getSeeClub: async (req, res) => {
+    try {
+      res.render("todos.ejs")
+      console.log(club)
+    } catch (err) {
+      console.error(`Club not found: ${err}`);
+    }
+  },
   createClubForm: async (req, res) => {
     try {
       const users = await Users.find().sort({ createdAt: "desc" }).lean();

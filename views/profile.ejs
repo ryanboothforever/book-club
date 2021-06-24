@@ -38,41 +38,41 @@
           <div><a href="./createclubform"><i class="fas fa-plus"></i></a></div>
           <div><a href="#"><i class="fas fa-envelope"></i></a></div>
         </div>
+        <a href="/banana">
+          <div class="row w-100">
+            <% for ( let i=0; i < clubs.length; i++ ) { %>
+            <div class="col-12 col justify-content-start d-flex border border-secondary gy-3">
+              <div class="row w-100">
+                <div class="container overflow-hidden">
+                  <div class="club-info row">
+                    <div class="col-2 align-self-center">
+                      <img class="rounded-circle profile-pic col" src="https://i.imgur.com/rmPcjzA.jpg"
+                        alt="founder-profile-pic">
+                      <div>
+                        <p><%= clubs[i].founderName %></p>
+                      </div>
+                    </div>
 
-        <div class="row w-100">
-          <% for ( let i=0; i < clubs.length; i++ ) { %>
-          <div class="col-12 col justify-content-start d-flex border border-secondary gy-3">
-            <div class="row w-100">
-              <div class="container overflow-hidden">
-                <div class="club-info row">
-                  <div class="col-2 align-self-center">
-                    <img class="rounded-circle profile-pic col" src="https://i.imgur.com/rmPcjzA.jpg"
-                      alt="founder-profile-pic">
-                    <div>
-                      <p><%= clubs[i].founderName %></p>
+                    <div class="col-10">
+                      <div class="justify-content-start text-start">
+                        <span class="title text-start">Book: <%= clubs[i].bookTitle %></span>
+                      </div>
+                      <div class="author text-start">
+                        <span class="author">Author: <%= clubs[i].bookAuthor %></span>
+                      </div>
+                      <div class="text-start">
+                        <p class="synopsis text-break"><%= clubs[i].synopsis %>
+                        </p>
+                      </div>
+                      <p>Members: <%= clubs[i].members %></p>
                     </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="justify-content-start text-start">
-                      <span class="title text-start">Book: <%= clubs[i].bookTitle %></span>
-                    </div>
-                    <div class="author text-start">
-                      <span class="author">Author: <%= clubs[i].bookAuthor %></span>
-                    </div>
-                    <div class="text-start">
-                      <p class="synopsis text-break"><%= clubs[i].synopsis %>
-                      </p>
-                    </div>
-                    <p>Members: <%= clubs[i].members %></p>
                   </div>
                 </div>
               </div>
             </div>
+            <% } %>
           </div>
-          <% } %>
-        </div>
-
+        </a>
       </div>
     </div>
 
