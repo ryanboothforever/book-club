@@ -16,6 +16,8 @@ router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
 router.get("/profile", ensureAuth, clubsController.getClub);
 router.get("/createclubform", ensureAuth, clubsController.createClubForm);
+// will change route to /:id to get specific club
+router.get("/clubs/:id", clubsController.getSeeClub);
 
 router.get("/feed", ensureAuth, entriesController.getFeed);
 router.get("/entry", entriesController.getEntry);

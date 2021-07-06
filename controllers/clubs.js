@@ -1,4 +1,4 @@
-const { ObjectId } = require("bson");
+const { ObjectId } = require("mongodb");
 const cloudinary = require("../middleware/cloudinary");
 const Clubs = require("../models/Clubs");
 const Users = require("../models/User");
@@ -16,9 +16,13 @@ const Books = (module.exports = {
     }
   },
   getSeeClub: async (req, res) => {
+    const id = new ObjectId(req.params.id);
     try {
-      res.render("todos.ejs")
-      console.log(club)
+      const club = await Clubs.findById({ _id: id });
+      console.log(req.params.id);
+      res.render("club.ejs", {
+        club: club,
+      });
     } catch (err) {
       console.error(`Club not found: ${err}`);
     }

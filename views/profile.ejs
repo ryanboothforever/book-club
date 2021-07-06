@@ -38,9 +38,9 @@
           <div><a href="./createclubform"><i class="fas fa-plus"></i></a></div>
           <div><a href="#"><i class="fas fa-envelope"></i></a></div>
         </div>
-        <a href="/banana">
+        <% for ( let i=0; i < clubs.length; i++ ) { %>
+        <a href="/clubs/<%= clubs[i]._id %>">
           <div class="row w-100">
-            <% for ( let i=0; i < clubs.length; i++ ) { %>
             <div class="col-12 col justify-content-start d-flex border border-secondary gy-3">
               <div class="row w-100">
                 <div class="container overflow-hidden">
