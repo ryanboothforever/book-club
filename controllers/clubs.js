@@ -5,8 +5,8 @@ const Users = require("../models/User");
 const Books = (module.exports = {
   getClub: async (req, res) => {
     try {
-      const users = await Users.find();
-      const clubs = await Clubs.find().sort({ createdAt: "desc" }).lean();
+      const clubs = await Clubs.find().populate("members", "userName");
+      console.log(JSON.stringify(clubs, null, 4));
       res.render("profile.ejs", {
         clubs: clubs,
         user: req.user,

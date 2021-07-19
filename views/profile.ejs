@@ -64,13 +64,15 @@
                         <p class="synopsis text-break"><%= clubs[i].synopsis %>
                         </p>
                       </div>
-                      <p>Members: <%= clubs[i].members %></p>
+                      <p>
+                        Members: <% for ( let j=0; j < clubs[i].members.length; j++ ) { %>
+                        <%= j !== clubs[i].members.length - 1 ? clubs[i].members[j].userName + "," : clubs[i].members[j].userName  %>
+                        <% } %> </p>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <% } %>
+            </div> <% } %>
           </div>
         </a>
       </div>
