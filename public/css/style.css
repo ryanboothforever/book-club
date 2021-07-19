@@ -24,6 +24,10 @@
 
 /* Collections */
 
+div.row.w-100{
+    --bs-gutter-x: 0;
+}
+
 /* Scroll text on resize */
 .synopsis, .quote{
  height: 140px;
